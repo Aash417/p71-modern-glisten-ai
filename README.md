@@ -2,8 +2,8 @@
 
 Want to quickly get started building your own project with [Prismic][prismic] and [Next.js][nextjs]? This project includes basic configurations and nothing else. The project includes one Rich Text Slice, a homepage, and a dynamic page.
 
-- **Demo**: [Open live demo][live-demo]
-- **Learn more about Prismic and Next.js**: [Prismic Next.js Documentation][prismic-docs]
+-  **Demo**: [Open live demo][live-demo]
+-  **Learn more about Prismic and Next.js**: [Prismic Next.js Documentation][prismic-docs]
 
 &nbsp;
 
@@ -53,9 +53,9 @@ If you chose this starter when you created a new repository from the Prismic Das
 
 This website is preconfigured with Prismic. It has three Prismic packages installed:
 
-- `@prismicio/client` provides helpers for fetching content from Prismic
-- `@prismicio/react` provides React components for rendering content from Prismic
-- `@prismicio/next` provides a wrapper component to configure Prismic previews
+-  `@prismicio/client` provides helpers for fetching content from Prismic
+-  `@prismicio/react` provides React components for rendering content from Prismic
+-  `@prismicio/next` provides a wrapper component to configure Prismic previews
 
 These packages are already integrated and employed in this app. Take a look at the code to see how they're used.
 
@@ -68,18 +68,18 @@ There are two steps to rendering content from Prismic in your Next.js project:
 
 Here are some of the files in your project that you can edit:
 
-- `prismicio.ts` - This file includes configuration for `@prismicio/client` and exports useful API helpers.
-- `app/layout.tsx` - This is your layout component, which includes configuration for `@prismicio/react` and `@prismicio/next`.
-- `app/page.tsx` - This is the app homepage. It queries and renders a page document with the UID (unique identifier) "home" from the Prismic API.
-- `app/[uid]/page.tsx` - This is the page component, which queries and renders a page document from your Prismic repository based on the UID.
-- `slices/*/index.tsx` - Each Slice in your project has an index.tsx file that renders the Slice component. Edit this file to customize your Slices.
+-  `prismicio.ts` - This file includes configuration for `@prismicio/client` and exports useful API helpers.
+-  `app/layout.tsx` - This is your layout component, which includes configuration for `@prismicio/react` and `@prismicio/next`.
+-  `app/page.tsx` - This is the app homepage. It queries and renders a page document with the UID (unique identifier) "home" from the Prismic API.
+-  `app/[uid]/page.tsx` - This is the page component, which queries and renders a page document from your Prismic repository based on the UID.
+-  `slices/*/index.tsx` - Each Slice in your project has an index.tsx file that renders the Slice component. Edit this file to customize your Slices.
 
 These are important files that you should leave as-is:
 
-- `app/api/exit-preview/route.ts` - Do not edit or delete this file. This is the API endpoint to close a Prismic preview session.
-- `app/api/preview/route.ts` - Do not edit or delete this file. This is the API endpoint to launch a Prismic preview session.
-- `app/slice-simulator/page.tsx` - Do not edit or delete this file. This file simulates your Slice components in development.
-- `slices/` - This directory contains Slice components, which are generated programmatically by Slice Machine. To customize a Slice template, you can edit the Slice's index.tsx file. To add Slices, delete Slices, or edit Slice models, use Slice Machine (more info below).
+-  `app/api/exit-preview/route.ts` - Do not edit or delete this file. This is the API endpoint to close a Prismic preview session.
+-  `app/api/preview/route.ts` - Do not edit or delete this file. This is the API endpoint to launch a Prismic preview session.
+-  `app/slice-simulator/page.tsx` - Do not edit or delete this file. This file simulates your Slice components in development.
+-  `slices/` - This directory contains Slice components, which are generated programmatically by Slice Machine. To customize a Slice template, you can edit the Slice's index.tsx file. To add Slices, delete Slices, or edit Slice models, use Slice Machine (more info below).
 
 Learn more about how to edit your components with [Fetch Data in Next.js](https://prismic.io/docs/technologies/fetch-data-nextjs) and [Template Content in Next.js](https://prismic.io/docs/technologies/template-content-nextjs).
 
