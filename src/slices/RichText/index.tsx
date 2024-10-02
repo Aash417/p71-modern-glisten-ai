@@ -17,7 +17,6 @@ const components: JSXMapSerializer = {
    },
 };
 
-
 type RichTextProps = SliceComponentProps<Content.RichTextSlice>;
 
 const RichText = ({ slice }: RichTextProps): JSX.Element => {
