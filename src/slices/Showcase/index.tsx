@@ -1,0 +1,73 @@
+import Bounded from '@/components/Bounded';
+import { Content } from '@prismicio/client';
+import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
+import clsx from 'clsx';
+import { PiArrowsClockwise, PiGear } from 'react-icons/pi';
+
+export type ShowcaseProps = SliceComponentProps<Content.ShowcaseSlice>;
+
+const icons = {
+   gear: <PiGear />,
+   cycle: <PiArrowsClockwise />,
+};
+
+const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
+   return (
+      <Bounded
+         data-slice-type={slice.slice_type}
+         data-slice-variation={slice.variation}
+         className="relative"
+      >
+         <div className="glow absolute -z-10 aspect-square w-full max-w-xl rounded-full bg-blue-400/20 blur-3xl filter" />
+         <PrismicRichText
+            field={slice.primary.heading}
+            components={{
+               heading2: ({ children }) => (
+                  <h2 className="text-balance text-center text-5xl font-medium md:text-7xl">
+                     {children}
+                  </h2>
+               ),
+            }}
+         />
+         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero, et
+         provident, eos deserunt inventore quisquam ullam id quas temporibus
+         sint velit officia atque recusandae, iure minus sapiente aliquid qui
+         voluptates.
+         <div className="mt-16 grid items-center gap-8 rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-sm lg:grid-cols-3 lg:gap-0 lg:py-12">
+            <div className="">
+               <div className="w-fit rounded-lg bg-blue-500/35 p-4 text-3xl">
+                  {slice.primary.icon && icons[slice.primary.icon]}
+               </div>
+               <div className="mt-6 text-2xl font-normal">
+                  <PrismicRichText field={slice.primary.subheading} />
+               </div>
+
+               <div className="prose prose-invert mt-4 max-w-xl">
+                  <PrismicRichText field={slice.primary.body} />
+               </div>
+
+               <PrismicNextLink
+                  field={slice.primary.buttonlink}
+                  className="relative mt-6 inline-flex h-fit w-fit rounded-full border border-blue-100/20 bg-blue-200/10 px-4 py-2 text-blue-200 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10 after:animate-pulse after:rounded-full after:bg-yellow-100 after:bg-opacity-0 after:blur-md after:transition-all after:duration-500 hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 focus:ring-2"
+               >
+                  {slice.primary.buttontext || 'learn more'}
+               </PrismicNextLink>
+            </div>
+
+            <PrismicNextImage
+               field={slice.primary.image}
+               className={clsx(
+                  'opacity-90 shadow-2xl lg:col-span-2 lg:pt-0',
+                  slice.variation === 'reverse'
+                     ? 'lg:order-1 lg:translate-x-[15%]'
+                     : 'lg:-order-1 lg:translate-x-[-15%]',
+               )}
+               sizes="(max-width: 768px) 100vw, 50vw"
+            />
+         </div>
+      </Bounded>
+   );
+};
+
+export default Showcase;
