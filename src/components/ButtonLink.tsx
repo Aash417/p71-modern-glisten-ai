@@ -9,6 +9,6 @@ function ButtonLink({ className, ...restProps }: PrismicNextLinkProps) {
             className,
          )}
          {...restProps}
-      />
+      ></PrismicNextLink>
    );
 }
