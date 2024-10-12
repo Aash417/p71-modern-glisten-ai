@@ -30,10 +30,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
                ),
             }}
          />
-         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero, et
-         provident, eos deserunt inventore quisquam ullam id quas temporibus
-         sint velit officia atque recusandae, iure minus sapiente aliquid qui
-         voluptates.
+
          <div className="mt-16 grid items-center gap-8 rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-sm lg:grid-cols-3 lg:gap-0 lg:py-12">
             <div className="">
                <div className="w-fit rounded-lg bg-blue-500/35 p-4 text-3xl">

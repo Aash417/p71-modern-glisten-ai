@@ -4,7 +4,11 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = ShowcaseSlice | BentoSlice | HeroSlice;
+type PageDocumentDataSlicesSlice =
+   | IntegrationsSlice
+   | ShowcaseSlice
+   | BentoSlice
+   | HeroSlice;
 
 /**
  * Content for Page documents
@@ -370,6 +374,90 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>;
 
 /**
+ * Item in *Integrations → Default → Primary → Items*
+ */
+export interface IntegrationsSliceDefaultPrimaryItemsItem {
+   /**
+    * Icon field in *Integrations → Default → Primary → Items*
+    *
+    * - **Field Type**: Select
+    * - **Placeholder**: *None*
+    * - **API ID Path**: integrations.default.primary.items[].icon
+    * - **Documentation**: https://prismic.io/docs/field#select
+    */
+   icon: prismic.SelectField<
+      'digitalocean' | 'cloudflare' | 'npm' | 'github' | 'figma' | 'fly'
+   >;
+}
+
+/**
+ * Primary content in *Integrations → Default → Primary*
+ */
+export interface IntegrationsSliceDefaultPrimary {
+   /**
+    * Heading field in *Integrations → Default → Primary*
+    *
+    * - **Field Type**: Title
+    * - **Placeholder**: *None*
+    * - **API ID Path**: integrations.default.primary.heading
+    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+    */
+   heading: prismic.TitleField;
+
+   /**
+    * Body field in *Integrations → Default → Primary*
+    *
+    * - **Field Type**: Rich Text
+    * - **Placeholder**: *None*
+    * - **API ID Path**: integrations.default.primary.body
+    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+    */
+   body: prismic.RichTextField;
+
+   /**
+    * Items field in *Integrations → Default → Primary*
+    *
+    * - **Field Type**: Group
+    * - **Placeholder**: *None*
+    * - **API ID Path**: integrations.default.primary.items[]
+    * - **Documentation**: https://prismic.io/docs/field#group
+    */
+   items: prismic.GroupField<
+      Simplify<IntegrationsSliceDefaultPrimaryItemsItem>
+   >;
+}
+
+/**
+ * Default variation for Integrations Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IntegrationsSliceDefault = prismic.SharedSliceVariation<
+   'default',
+   Simplify<IntegrationsSliceDefaultPrimary>,
+   never
+>;
+
+/**
+ * Slice variation for *Integrations*
+ */
+type IntegrationsSliceVariation = IntegrationsSliceDefault;
+
+/**
+ * Integrations Shared Slice
+ *
+ * - **API ID**: `integrations`
+ * - **Description**: Integrations
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IntegrationsSlice = prismic.SharedSlice<
+   'integrations',
+   IntegrationsSliceVariation
+>;
+
+/**
  * Primary content in *Showcase → Default → Primary*
  */
 export interface ShowcaseSliceDefaultPrimary {
@@ -599,6 +687,11 @@ declare module '@prismicio/client' {
          HeroSliceDefaultPrimary,
          HeroSliceVariation,
          HeroSliceDefault,
+         IntegrationsSlice,
+         IntegrationsSliceDefaultPrimaryItemsItem,
+         IntegrationsSliceDefaultPrimary,
+         IntegrationsSliceVariation,
+         IntegrationsSliceDefault,
          ShowcaseSlice,
          ShowcaseSliceDefaultPrimary,
          ShowcaseSliceReversePrimary,
