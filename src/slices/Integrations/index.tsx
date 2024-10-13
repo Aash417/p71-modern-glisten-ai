@@ -5,9 +5,7 @@ import {
    PrismicText,
    SliceComponentProps,
 } from '@prismicio/react';
-import clsx from 'clsx';
 import Image from 'next/image';
-import React from 'react';
 import {
    FaCloudflare,
    FaDigitalOcean,
@@ -16,8 +14,8 @@ import {
    FaGithub,
    FaNpm,
 } from 'react-icons/fa';
+import AnimatedContent from './AnimatedContent';
 import StarBackground from './StarBackground';
-import StylizedLogoMark from './StylizedLogoMark';
 import background from './background.jpg';
 
 export type IntegrationsProps = SliceComponentProps<Content.IntegrationsSlice>;
@@ -54,33 +52,7 @@ const Integrations = ({ slice }: IntegrationsProps): JSX.Element => {
                <PrismicRichText field={slice.primary.body} />
             </div>
 
-            <div className="mt-20 flex flex-col items-center md:flex-row">
-               {slice.primary.items.map((item, index) => (
-                  <React.Fragment key={index + 1}>
-                     {index === Math.floor(slice.items.length / 2) && (
-                        <>
-                           <StylizedLogoMark />
-                           <div className="signal-line rotate-180 bg-gradient-to-t" />
-                        </>
-                     )}
-
-                     <div className="pulsing-icon flex aspect-square shrink-0 items-center justify-center rounded-full border border-blue-50/30 bg-blue-50/25 p-3 text-3xl text-blue-100 opacity-30 md:text-4xl lg:text-5xl">
-                        {item.icon && icons[item.icon]}
-                     </div>
-
-                     {index !== slice.items.length - 1 && (
-                        <div
-                           className={clsx(
-                              'signal-line',
-                              index >= Math.floor(slice.items.length / 2)
-                                 ? 'rotate-180'
-                                 : 'rotate-0',
-                           )}
-                        />
-                     )}
-                  </React.Fragment>
-               ))}
-            </div>
+            <AnimatedContent slice={slice} />
          </div>
       </Bounded>
    );
