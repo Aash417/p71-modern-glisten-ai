@@ -1,12 +1,7 @@
 import Bounded from '@/components/Bounded';
-import StarGrid from '@/components/StarGrid';
-import { Content, isFilled } from '@prismicio/client';
-import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
-import {
-   PrismicRichText,
-   PrismicText,
-   SliceComponentProps,
-} from '@prismicio/react';
+import { Content } from '@prismicio/client';
+import { SliceComponentProps } from '@prismicio/react';
+import AnimatedContent from './AnimatedContent';
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
@@ -17,7 +12,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
          data-slice-variation={slice.variation}
          className="text-center"
       >
-         <div className="relative">
+         {/* <div className="relative">
             <StarGrid />
             {isFilled.richText(slice.primary.heading) && (
                <h1 className="text-balance text-5xl font-medium md:text-7xl">
@@ -46,7 +41,8 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                   <PrismicNextImage field={slice.primary.image} />
                </div>
             )}
-         </div>
+         </div> */}
+         <AnimatedContent slice={slice} />
       </Bounded>
    );
 };
